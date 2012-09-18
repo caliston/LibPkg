@@ -20,12 +20,18 @@ doc: html/index.html
 all: bin doc
 
 libpkg.a: libpkg/timestamp
-	mkdir -p a
-	$(AR) -c a.libpkg libpkg.o.*
-	$(AR) -o a.libpkg
+	#mkdir -p a
+	#$(AR) -c a.libpkg libpkg.o.*
+	#$(AR) -o a.libpkg
+	rm -f libpkg.a
+	ar r libpkg.a libpkg/*.o
 
 libpkg/timestamp: always
 	make -C libpkg
 
 html/index.html: libpkg/timestamp $(DOXYFILES)
 	doxygen
+
+clean:
+	rm -f libpkg.a
+	rm -f libpkg/*.o

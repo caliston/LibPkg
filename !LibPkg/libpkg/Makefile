@@ -3,11 +3,13 @@
 # Distribution and use are subject to the GNU General Public License,
 # a copy of which may be found in the file !RiscPkg.Copyright.
 
-CPPFLAGS = -Irtk: -Izlib:zlib -Ilibcurl: -Ilibpkg_build:
+#CPPFLAGS = -Irtk: -Izlib:zlib -Ilibcurl: -Ilibpkg_build:
+CPPFLAGS = -I..
 CXXFLAGS = -mthrowback -munixlib -mpoke-function-name \
  -Wall -W -Wno-unused -Wno-uninitialized -O2
 
-include fixdeps:Rules/make
+#include fixdeps:Rules/make
+include ../../../FixDeps/\!FixDeps/Rules.make
 
 OBJ = md5.o \
  auto_dir.o \
@@ -43,4 +45,4 @@ all: timestamp
 timestamp: $(OBJ)
 	touch timestamp
 
-include $(OBJ:.o=.d)
+#include $(OBJ:.o=.cc)
