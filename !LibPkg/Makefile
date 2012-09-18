@@ -27,7 +27,7 @@ libpkg.a: libpkg/timestamp
 	ar r libpkg.a libpkg/*.o
 
 libpkg/timestamp: always
-	make -C libpkg
+	$(MAKE) -C libpkg
 
 html/index.html: libpkg/timestamp $(DOXYFILES)
 	doxygen
